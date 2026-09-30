@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+
+# VS Code
+.vscode/
+
+# YOLO pretrained model
+yolov8n.pt
+
+# YOLO training outputs
+runs/
+
+# Temporary files
+*.log
+*.tmp
+weights/yolo26n.pt

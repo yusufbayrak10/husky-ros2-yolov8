@@ -1,0 +1,588 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+
+  <world name="soil_road">
+
+    <!-- ================================================= -->
+    <!-- FIZIK                                             -->
+    <!-- ================================================= -->
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+
+    <!-- ================================================= -->
+    <!-- GAZEBO SISTEMLERI                                 -->
+    <!-- ================================================= -->
+
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>
+
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+
+    <!-- Kamera, LiDAR ve diger sensorlerin calismasi icin -->
+    <plugin
+      name="ignition::gazebo::systems::Sensors"
+      filename="libignition-gazebo-sensors-system.so">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+
+    <!-- ================================================= -->
+    <!-- GUNES                                             -->
+    <!-- ================================================= -->
+
+    <light type="directional" name="sun">
+
+      <cast_shadows>true</cast_shadows>
+
+      <pose>0 0 10 0 0 0</pose>
+
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+
+      <specular>0.2 0.2 0.2 1</specular>
+
+      <direction>-0.5 0.1 -0.9</direction>
+
+    </light>
+
+
+    <!-- ================================================= -->
+    <!-- TOPRAK YOL                                        -->
+    <!-- ================================================= -->
+
+    <model name="soil_road">
+
+      <static>true</static>
+
+      <link name="link">
+
+        <collision name="collision">
+
+          <geometry>
+
+            <box>
+              <size>4 30 0.1</size>
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="visual">
+
+          <geometry>
+
+            <box>
+              <size>4 30 0.1</size>
+            </box>
+
+          </geometry>
+
+
+          <!-- Kahverengi toprak -->
+
+          <material>
+
+            <ambient>0.45 0.25 0.08 1</ambient>
+
+            <diffuse>0.55 0.32 0.10 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- SOL YESIL ALAN                                    -->
+    <!-- ================================================= -->
+
+    <model name="left_field">
+
+      <static>true</static>
+
+      <pose>-5 0 0 0 0 0</pose>
+
+      <link name="link">
+
+        <collision name="collision">
+
+          <geometry>
+
+            <box>
+              <size>6 30 0.08</size>
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="visual">
+
+          <geometry>
+
+            <box>
+              <size>6 30 0.08</size>
+            </box>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>0.08 0.30 0.08 1</ambient>
+
+            <diffuse>0.10 0.45 0.10 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- SAG YESIL ALAN                                    -->
+    <!-- ================================================= -->
+
+    <model name="right_field">
+
+      <static>true</static>
+
+      <pose>5 0 0 0 0 0</pose>
+
+      <link name="link">
+
+        <collision name="collision">
+
+          <geometry>
+
+            <box>
+              <size>6 30 0.08</size>
+            </box>
+
+          </geometry>
+
+        </collision>
+
+
+        <visual name="visual">
+
+          <geometry>
+
+            <box>
+              <size>6 30 0.08</size>
+            </box>
+
+          </geometry>
+
+
+          <material>
+
+            <ambient>0.08 0.30 0.08 1</ambient>
+
+            <diffuse>0.10 0.45 0.10 1</diffuse>
+
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- SOL BITKI SIRASI                                  -->
+    <!-- ================================================= -->
+
+    <model name="left_plants">
+
+      <static>true</static>
+
+      <link name="link">
+
+        <visual name="plant_1">
+
+          <pose>-3.2 -12 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_2">
+
+          <pose>-3.2 -9 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_3">
+
+          <pose>-3.2 -6 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_4">
+
+          <pose>-3.2 -3 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_5">
+
+          <pose>-3.2 0 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_6">
+
+          <pose>-3.2 3 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_7">
+
+          <pose>-3.2 6 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_8">
+
+          <pose>-3.2 9 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_9">
+
+          <pose>-3.2 12 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+    <!-- ================================================= -->
+    <!-- SAG BITKI SIRASI                                  -->
+    <!-- ================================================= -->
+
+    <model name="right_plants">
+
+      <static>true</static>
+
+      <link name="link">
+
+        <visual name="plant_1">
+
+          <pose>3.2 -12 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_2">
+
+          <pose>3.2 -9 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_3">
+
+          <pose>3.2 -6 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_4">
+
+          <pose>3.2 -3 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_5">
+
+          <pose>3.2 0 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_6">
+
+          <pose>3.2 3 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_7">
+
+          <pose>3.2 6 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_8">
+
+          <pose>3.2 9 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+
+        <visual name="plant_9">
+
+          <pose>3.2 12 0.45 0 0 0</pose>
+
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+
+          <material>
+            <ambient>0.02 0.45 0.02 1</ambient>
+            <diffuse>0.02 0.65 0.02 1</diffuse>
+          </material>
+
+        </visual>
+
+      </link>
+
+    </model>
+
+
+  </world>
+
+</sdf>
+
